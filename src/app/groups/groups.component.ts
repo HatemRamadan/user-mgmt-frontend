@@ -22,6 +22,8 @@ export class GroupsComponent implements OnInit {
   groupsReady=false;
   showDeleted=false;
   showSaved=false;
+  showError=false;
+
   username="";
   showUserDeleted=false;
 
@@ -34,7 +36,7 @@ export class GroupsComponent implements OnInit {
         this.groupsReady = true;
       },
       error=>{
-
+        this.showError=true;
       }
     );
     this.showDeleted=false;
@@ -42,6 +44,7 @@ export class GroupsComponent implements OnInit {
     this.username="";
     this.showUserDeleted=false;
     this.users=[];
+    this.showError=false;
   }
   showMembers(group:Group){
     
@@ -53,7 +56,10 @@ export class GroupsComponent implements OnInit {
         this.users=data;
       },
       error=>{
-
+        this.showError=true;
+        setTimeout(() => {
+          this.showError=false;
+        }, 2000);
       }
     );
   }
@@ -68,6 +74,10 @@ export class GroupsComponent implements OnInit {
         element.click();         
       },
       error=>{
+        this.showError=true;
+        setTimeout(() => {
+          this.showError=false;
+        }, 2000);
       }
     );
   }
@@ -83,6 +93,10 @@ export class GroupsComponent implements OnInit {
         this.username="";
       },
       error=>{
+        this.showError=true;
+        setTimeout(() => {
+          this.showError=false;
+        }, 2000);
       }
     );
 
@@ -95,6 +109,10 @@ export class GroupsComponent implements OnInit {
         element.click();         
       },
       error=>{
+        this.showError=true;
+        setTimeout(() => {
+          this.showError=false;
+        }, 2000);
       }
     );
   }
@@ -109,6 +127,11 @@ export class GroupsComponent implements OnInit {
         }, 2000);   
       },
       error=>{
+        this.showError=true;
+        setTimeout(() => {
+          this.showError=false;
+        }, 2000); 
+
       }
     );
   }

@@ -54,6 +54,7 @@
                 <div *ngIf="showSaved" class="alert-success mt-1 mb-0">Added</div>
                 <div *ngIf="showDeleted" class="alert-success mt-1 mb-0">Deleted!</div>
                 <div *ngIf="showUserDeleted" class="alert-success mt-1 mb-0">Removed!</div>
+                <div *ngIf="showError" class="alert-danger mt-1 mb-0">Error occured!</div>
                 <button type="button" class="btn btn-danger" (click)="deleteGroup()">Delete
                     Group</button>
             </div>
