@@ -1,0 +1,168 @@
+<div *ngIf="usersReady" class="container mt-4">
+    <div class="row">
+       
+        <div class="card m-3 center-text" data-toggle="modal" data-target="#myModal2">
+            <div class="card-face ">
+                <div class="card-face__avatar" style="margin-top: 30%; margin-right: 5%">
+                        <img  src="assets/add.png" width="90" height= "90" draggable="false">
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Card widget -->
+        <div class="card m-3" *ngFor="let user of users"
+        (click)="editUser(user)" data-toggle="modal" data-target="#myModal">
+            <!-- Face 1 -->
+            <div class="card-face ">
+               
+                <!-- Avatar -->
+                <div class="card-face__avatar">
+                    <!-- User avatar --><img
+                        src="https://s3.amazonaws.com/uifaces/faces/twitter/csswizardry/128.jpg" width="110"
+                        height="110" draggable="false" /></div><!-- Name -->
+                <h2 class="card-face__name">{{user.name}}</h2><!-- Title -->
+                <span class="card-face__title">@{{user.username}}<div>{{user.email}}</div></span>
+                
+                    
+            </div>
+        </div>
+
+        <!-- <div class="col-md-3 card text-white bg-dark mb-4 mr-4" style="max-width: 18rem;" *ngFor="let user of users"
+            (click)="editUser(user)" data-toggle="modal" data-target="#myModal">
+            <div class="card-header">{{user.name}}</div>
+            <div class="card-body">
+                <h5 class="card-title">@{{user.username}}</h5>
+                <p class="card-text">{{user.email}}</p>
+                <p class="card-text">{{user.role}}</p>
+            </div>
+        </div> -->
+    </div>
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit User</h4>
+                <button type="button" class="close" (click)="closeModal()" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+                <div class="form-group row">
+
+                    <label class="col-sm-2 col-form-label" for="username">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" [(ngModel)]="user2.username">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="name">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" [(ngModel)]="user2.name">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="email">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email" [(ngModel)]="user2.email">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <div class="form-inline">
+                            <div>Admin</div> <input class="ml-2" type="checkbox" value="Is Admin" [(ngModel)]="isAdmin">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button *ngIf="!deleted" type="button" class="btn btn-danger" (click)="deleteUser()">Delete
+                    User</button>
+                <button *ngIf="deleted" type="button" class="btn btn-danger" (click)="undoDeleteUser()">Undo Delete
+                    User</button>
+                <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
+                <div *ngIf="showSaved" class="alert-success mt-3 mb-0">Saved!</div>
+                <div *ngIf="done" class="alert-success mt-3 mb-0">Done!</div>
+                <div *ngIf="showDeleted" class="alert-danger mt-3 mb-0">Deleted!</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add User</h4>
+                <button type="button" class="close" (click)="closeModal()" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+                <div class="form-group row">
+
+                    <label class="col-sm-2 col-form-label" for="username2">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username2" [(ngModel)]="user2.username">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="name2">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name2" [(ngModel)]="user2.name">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="email2">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email2" [(ngModel)]="user2.email">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="password">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password" [(ngModel)]="user2.password">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <div class="form-inline">
+                            <div>Admin</div> <input class="ml-2" type="checkbox" value="Is Admin" [(ngModel)]="isAdmin">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="addUser()">Save</button>
+                <div *ngIf="showSaved" class="alert-success mt-3 mb-0">Saved!</div>
+            </div>
+
+        </div>
+    </div>
+</div>

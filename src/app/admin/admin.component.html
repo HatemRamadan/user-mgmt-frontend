@@ -1,0 +1,98 @@
+<div id="mySidenav" class="sidenav  bg-dark" [style.width.px]="width">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeEditSideMenu()">&times;</a>
+    <span clickable (click)="navToShowUsers()">Show Users</span>
+    <span (click)="navToShowGroups()">Show Groups</span>
+    <span clickable (click)="navToEditMyProfile()">Edit My Profile</span>
+</div>
+
+
+<div id="main" [style.marginLeft.px]="margin">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="collapsingNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-item nav-link active" href="admin">My Profile</a>
+                </li>
+                
+                <li class="nav-item">
+                    <span>
+                        <button class="nav-item nav-link" (click)="openManageSideMenu()"
+                            style="outline: none;text-decoration: none;background: rgba(0, 0,0, 0); border: rgba(0, 0,0, 0)">
+                            Manage
+                        </button>
+                    </span>
+                </li>
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="">
+                        <button class="nav-item nav-link" (click)="logout()"
+                            style="outline: none;text-decoration: none;background: rgba(0, 0,0, 0); border: rgba(0, 0,0, 0)">
+                            Logout
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div *ngIf="showProfile" style="margin-left: 30%">
+        <div class="container d-inline-flex mt-2">
+            <div class="row no-gutters">
+                <div class="col-sm-6 col-lg  col-md m-2" style="-ms-flex: 0 0 200px;
+                flex: 0 0 200px;">
+                    <img src="assets/user.png" alt="User" width="200" height="200">
+                </div>
+                <div class="col-sm-6 col-lg col-md text-left mt-5">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <h4 *ngIf="!editNameMode"><strong>{{name}}</strong></h4>
+                            <input *ngIf="editNameMode" type="text" [(ngModel)]="name2">
+                            <div *ngIf="editMode">
+                                <button class="btn btn-secondary ml-1 mb-1 pt-1 " (click)="showEditName()"
+                                    style="font-size: 10px;">Edit</button>
+                                <button class="btn btn-success ml-1 mb-1 pt-1 " (click)="saveEditName()"
+                                    style="font-size: 10px;">Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <h6 *ngIf="!editUsernameMode">{{username}}</h6>
+                            <input *ngIf="editUsernameMode" type="text" [(ngModel)]="username2">
+                            <div *ngIf="editMode">
+                                <button class="btn btn-secondary ml-1 mb-1 pb-1" (click)="showEditUsername()"
+                                    style="font-size: 10px;">Edit</button>
+                                <button class="btn btn-success ml-1 mb-1 pb-1" (click)="saveEditUsername()"
+                                    style="font-size: 10px;">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <h6 *ngIf="!editEmailMode">{{email}}</h6>
+                            <input *ngIf="editEmailMode" type="text" [(ngModel)]="email2">
+                            <div *ngIf="editMode">
+                                <button class="btn btn-secondary ml-1 pt-1 mb-1" (click)="showEditEmail()"
+                                    style="font-size: 10px;">Edit</button>
+                                <button class="btn btn-success ml-1 pt-1 mb-1" (click)="saveEditEmail()"
+                                    style="font-size: 10px;">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>
