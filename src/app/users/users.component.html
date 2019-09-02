@@ -19,7 +19,7 @@
                 <!-- Avatar -->
                 <div class="card-face__avatar">
                     <!-- User avatar --><img
-                        src="https://s3.amazonaws.com/uifaces/faces/twitter/csswizardry/128.jpg" width="110"
+                        [src]="getStyle(user.userid)" width="110"
                         height="110" draggable="false" /></div><!-- Name -->
                 <h2 class="card-face__name">{{user.name}}</h2><!-- Title -->
                 <span class="card-face__title">@{{user.username}}<div>{{user.email}}</div></span>
@@ -88,14 +88,15 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
+                <div *ngIf="showSaved" class="alert-success mt-3 mb-0">Saved!</div>
+                <div *ngIf="done" class="alert-success mt-3 mb-0">Done!</div>
+                <div *ngIf="showDeleted" class="alert-danger mt-3 mb-0">Deleted!</div>
                 <button *ngIf="!deleted" type="button" class="btn btn-danger" (click)="deleteUser()">Delete
                     User</button>
                 <button *ngIf="deleted" type="button" class="btn btn-danger" (click)="undoDeleteUser()">Undo Delete
                     User</button>
                 <button type="button" class="btn btn-primary" (click)="saveChanges()">Save Changes</button>
-                <div *ngIf="showSaved" class="alert-success mt-3 mb-0">Saved!</div>
-                <div *ngIf="done" class="alert-success mt-3 mb-0">Done!</div>
-                <div *ngIf="showDeleted" class="alert-danger mt-3 mb-0">Deleted!</div>
+
             </div>
 
         </div>

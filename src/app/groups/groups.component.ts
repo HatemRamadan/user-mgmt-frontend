@@ -135,4 +135,16 @@ export class GroupsComponent implements OnInit {
       }
     );
   }
+
+  getStyle(id:number){
+    if(id%2==0)
+      return {"background-image": "url(\"assets/n0.jpg\")"};
+
+      if(id%3==0)
+      return {"background-image": "url(\"assets/n1.jpg\")"};
+      
+      return {"background-image": "url(\"assets/n2.jpg\")"};
+    
+    
+  }
 }

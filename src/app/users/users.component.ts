@@ -56,6 +56,7 @@ export class UsersComponent implements OnInit {
     this.originalUser = user;
     this.isAdmin = this.user2.role === "admin";
     this.deleted=user.deleted;
+  
   }
   saveChanges() {
 
@@ -64,6 +65,9 @@ export class UsersComponent implements OnInit {
         subscribe(
           data => {
             this.showSaved=true;
+            setTimeout(() => {
+              this.showSaved=false;
+            },2000);
           },
           error => {
             this.errors = true;
@@ -73,6 +77,9 @@ export class UsersComponent implements OnInit {
     this.userService.deleteUser(this.originalUser.username).pipe(first()).subscribe(
       data => {
         this.showDeleted = true;
+        setTimeout(() => {
+          this.showDeleted=false;
+        }, 2000);
       },
       error => {
         this.errors = true;
@@ -82,6 +89,7 @@ export class UsersComponent implements OnInit {
     this.userService.undoDeleteUser(this.originalUser.username).pipe(first()).subscribe(
       data => {
         this.done = true;
+        setTimeout(()=>{this.done = false;},2000);
       },
       error => {
         this.errors = true;
@@ -91,12 +99,29 @@ export class UsersComponent implements OnInit {
     this.ngOnInit();
   }
   addUser(){
+    this.user2.role=this.isAdmin?"admin":"user";
     this.userService.addUser(this.user2).pipe(first()).subscribe(
       data => {
         this.showSaved = true;
+        setTimeout(() => {
+          this.showSaved=false;
+        },2000);
       },
       error => {
         this.errors = true;
       });
+  }
+  getStyle(id:number){
+    if(id%4==0)
+    return "assets/p0.jpg";
+
+    if(id%2==0)
+    return "assets/p2.png";
+
+    if(id%3==0)
+    return "assets/p1.jpeg";
+    
+    return "assets/p3.jpg";
+
   }
 }

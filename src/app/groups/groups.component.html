@@ -7,7 +7,7 @@
 
         <div class="col-md-3 card card--big" *ngFor="let group of groups" (click)="showMembers(group)"
             data-toggle="modal" data-target="#myModal">
-            <div class="card__image" style="background-image: url(https://placeimg.com/640/480/nature);"></div>
+            <div class="card__image" ngStyle [ngStyle]="getStyle(group.groupid)"></div>
             <h2 class="card__title">{{group.name}}</h2><span class="card__subtitle">By Mattia Astorino</span>
             <p class="card__text">{{group.description}}</p>
         </div>
