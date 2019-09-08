@@ -1,13 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #24305e;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <a class="navbar-brand" href="#">Users Management</a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav">
-      <li class="nav-item ">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
+
 
       <li class="nav-item ">
         <div *ngIf="isLoggedIn"><a class="nav-item nav-link" href={{role}}>My Profile</a></div>
@@ -30,7 +29,10 @@
     </ul>
   </div>
 </nav>
-<div class="text-center pt-3">
-  <h1 class="mt-3">There are {{users}} users!</h1>
-  <h1 class="mt-3">There are {{groups}} groups!</h1>
+<div *ngIf="!homeReady" class="text-center" style="margin-left: 45%;margin-top: 20%">
+  <div class="loader"></div>
+</div>
+<div *ngIf="homeReady" class="slide-bottom text-center pt-3">
+  <h1 class="mt-3">{{users}} users!</h1>
+  <h1 class="mt-3">{{groups}} groups!</h1>
 </div>

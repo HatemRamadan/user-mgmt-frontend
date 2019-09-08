@@ -42,13 +42,7 @@ export class UsersComponent implements OnInit {
     this.showSaved = false;
     this.showDeleted = false;
     this.done=false;
-    this.user2 = {
-      "username": "",
-      "role": "",
-      "name": "",
-      "email": "",
-      "deleted": false
-    };
+    this.resetUser();
   }
 
   editUser(user: User) {
@@ -103,6 +97,7 @@ export class UsersComponent implements OnInit {
     this.userService.addUser(this.user2).pipe(first()).subscribe(
       data => {
         this.showSaved = true;
+        this.resetUser();
         setTimeout(() => {
           this.showSaved=false;
         },2000);
@@ -123,5 +118,14 @@ export class UsersComponent implements OnInit {
     
     return "assets/p3.jpg";
 
+  }
+  resetUser(){
+    this.user2 = {
+      "username": "",
+      "role": "",
+      "name": "",
+      "email": "",
+      "deleted": false
+    };
   }
 }

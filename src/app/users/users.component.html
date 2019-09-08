@@ -11,7 +11,7 @@
         </div>
 
         <!-- Card widget -->
-        <div class="card m-3" *ngFor="let user of users"
+        <div class="card m-3 " *ngFor="let user of users"
         (click)="editUser(user)" data-toggle="modal" data-target="#myModal">
             <!-- Face 1 -->
             <div class="card-face ">
@@ -27,16 +27,6 @@
                     
             </div>
         </div>
-
-        <!-- <div class="col-md-3 card text-white bg-dark mb-4 mr-4" style="max-width: 18rem;" *ngFor="let user of users"
-            (click)="editUser(user)" data-toggle="modal" data-target="#myModal">
-            <div class="card-header">{{user.name}}</div>
-            <div class="card-body">
-                <h5 class="card-title">@{{user.username}}</h5>
-                <p class="card-text">{{user.email}}</p>
-                <p class="card-text">{{user.role}}</p>
-            </div>
-        </div> -->
     </div>
 </div>
 <!-- The Modal -->
@@ -115,21 +105,22 @@
                 <button type="button" class="close" (click)="closeModal()" data-dismiss="modal">&times;</button>
             </div>
 
+            
             <!-- Modal body -->
             <div class="modal-body">
-
+                
                 <div class="form-group row">
 
                     <label class="col-sm-2 col-form-label" for="username2">Username</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="username2" [(ngModel)]="user2.username">
+                        <input type="text" class="form-control" id="username2" [(ngModel)]="user2.username" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label" for="name2">Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name2" [(ngModel)]="user2.name">
+                        <input type="text" class="form-control" id="name2" [(ngModel)]="user2.name" required>
                     </div>
                 </div>
 
@@ -144,7 +135,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label" for="password">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="password" [(ngModel)]="user2.password">
+                        <input type="password" class="form-control" id="password" [(ngModel)]="user2.password" required>
                     </div>
                 </div>
 
@@ -160,9 +151,12 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="addUser()">Save</button>
                 <div *ngIf="showSaved" class="alert-success mt-3 mb-0">Saved!</div>
+                <div *ngIf="errors" class="alert-danger mt-3 mb-0">Error Occured!</div>
+                <button type="submit" class="btn btn-primary" (click)="addUser()">Save</button>
+                
             </div>
+        
 
         </div>
     </div>

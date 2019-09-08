@@ -18,11 +18,35 @@
       justify-content: center;
     }
   }
+  .slide-fwd-center {
+    -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  @-webkit-keyframes slide-fwd-center {
+    0% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px);
+              transform: translateZ(160px);
+    }
+  }
+  @keyframes slide-fwd-center {
+    0% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px);
+              transform: translateZ(160px);
+    }
+  }  
   body.show-menu {
     background-color: #00ACC1;
   }
   .card {
-    /* background-color: #FFF; */
+    background-color: #374785; 
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -50,7 +74,10 @@
       cursor: pointer;
       /* box-shadow: 8px 8px 5px antiquewhite; */
       box-shadow:  0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
-    }
+      /* -webkit-animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-fwd-center 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; */
+    background-color: #f76c6c
+        }
   }
   .card-face {
     width: 100%;
@@ -99,7 +126,7 @@
     padding: 0 20px;
     text-align: center;
     width: 100%;
-    color: #263238;
+    color: #1b2327;
     -webkit-animation: fadedown 1s;
             animation: fadedown 1s;
     -webkit-animation-fill-mode: both;

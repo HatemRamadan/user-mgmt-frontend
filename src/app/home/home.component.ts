@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   // isLoggedIn=true;
   groups="";
   users="";
+  homeReady=false;
+
   constructor(private router: Router,
     private authenticationService: AuthenticationService,
     private groupService:GroupService,
@@ -41,6 +43,7 @@ export class HomeComponent implements OnInit {
     this.groupService.getNumOfGroups().pipe(first()).subscribe(
       data=>{
         this.groups=data.message;
+        this.homeReady=this.users!=="";
       },
       error=>{
 
@@ -51,6 +54,7 @@ export class HomeComponent implements OnInit {
     this.userService.getNumOfUsers().pipe(first()).subscribe(
       data=>{
         this.users=data.message;
+        this.homeReady=this.groups!=="";
       },
       error=>{
 
